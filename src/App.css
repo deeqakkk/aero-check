@@ -29,3 +29,15 @@ width: 40rem !important;
   justify-content: center;
   align-items: center;
 }
+a{
+  text-decoration: none;
+  color:inherit
+}
+
+.error-page{
+  height: 100vh;
+  display: flex;
+  flex-direction: column !important;
+  justify-content: center;
+  align-items: center;
+}
