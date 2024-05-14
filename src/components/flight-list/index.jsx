@@ -19,7 +19,7 @@ const FlightList = ({ searchValue }) => {
         searchText: `${flight.destination} ${flight.origin} ${flight.status} ${flight.airline} ${flight.flightNumber}`,
       }))
       setFlightsData(updatedFlightsData)
-      setFliterFlights(flightsData)
+      setFliterFlights(updatedFlightsData)
     }
   }, [data])
 
