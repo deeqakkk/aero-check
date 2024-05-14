@@ -1,10 +1,10 @@
-import { styled, alpha } from '@mui/material/styles'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
 import ConnectingAirportsIcon from '@mui/icons-material/ConnectingAirports'
+import Typography from '@mui/material/Typography'
+import TextField from '@mui/material/TextField'
 
 export default function SearchAppBar() {
   return (
@@ -28,6 +28,15 @@ export default function SearchAppBar() {
           >
             AeroCheck
           </Typography>
+          <TextField
+            label="Search..."
+            id="fullWidth"
+            variant="filled"
+            size='small'
+            sx={{
+              backgroundColor: 'white',
+            }}
+          />
         </Toolbar>
       </AppBar>
     </Box>

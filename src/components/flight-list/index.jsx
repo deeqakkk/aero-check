@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid'
+import Alert from '@mui/material/Alert'
+import AlertTitle from '@mui/material/AlertTitle'
 import FlightDetails from '../flight-card'
 import FlightCardSkeleton from '../skeleton'
 
@@ -48,11 +50,19 @@ const FlightList = () => {
   }
   return (
     <Grid container spacing={2} className="flight-list">
-      {flights.map((flight) => (
-        <Grid xs={12} item key={flight.id}>
-          <FlightDetails details={flight} />
-        </Grid>
-      ))}
+      {error && (
+        <Alert severity="error">
+          <AlertTitle>Error</AlertTitle>
+          {error}
+        </Alert>
+      )}
+      {flights &&
+        flights.length > 0 &&
+        flights.map((flight) => (
+          <Grid xs={12} item key={flight.id}>
+            <FlightDetails details={flight} />
+          </Grid>
+        ))}
     </Grid>
   )
 }

@@ -16,7 +16,7 @@ export default function Flight() {
   const location = useLocation()
 
   if (!location.state) {
-    ;<Navigate replace to="/404" />
+    <Navigate replace to="/404" />
   }
 
   const { flightNumber, airline, origin, destination, departureTime, status } =
