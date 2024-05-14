@@ -11,14 +11,14 @@ const FlightList = ({ searchValue }) => {
   const [error, setError] = useState(null)
   const [filteredFlights, setFliterFlights] = useState([])
 
-  const fetchFlights = async () => {
+  const fetchFlights = async (retryCount = 0) => {
     try {
       const response = await fetch(
         'https://flight-status-mock.core.travelopia.cloud/flights'
       )
       setLoading(true)
       if (!response.ok) {
-        setError('Something went wrong, please try again.')
+        throw new Error('Something went wrong, please try again.')
       } else {
         const flightData = await response.json()
         setFlights(
@@ -29,11 +29,17 @@ const FlightList = ({ searchValue }) => {
         )
         setFliterFlights(flightData)
       }
-
       setLoading(false)
     } catch (error) {
-      setError(error.message)
-      setLoading(false)
+      if (retryCount < 3) {
+        setTimeout(
+          () => fetchFlights(retryCount + 1),
+          Math.pow(2, retryCount) * 1000
+        )
+      } else {
+        setError(error.message)
+        setLoading(false)
+      }
     }
   }
 
