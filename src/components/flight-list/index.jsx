@@ -4,52 +4,29 @@ import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 import FlightDetails from '../flight-card'
 import FlightCardSkeleton from '../skeleton'
+import useFetchFromApi from '../../hooks/useFetchFromApi'
+import { apiURL } from '../../util/util'
 
 const FlightList = ({ searchValue }) => {
-  const [flights, setFlights] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
   const [filteredFlights, setFliterFlights] = useState([])
-
-  const fetchFlights = async (retryCount = 0) => {
-    try {
-      const response = await fetch(
-        'https://flight-status-mock.core.travelopia.cloud/flights'
-      )
-      setLoading(true)
-      if (!response.ok) {
-        throw new Error('Something went wrong, please try again.')
-      } else {
-        const flightData = await response.json()
-        setFlights(
-          flightData.map((flight) => ({
-            ...flight,
-            searchText: `${flight.destination} ${flight.origin} ${flight.status} ${flight.airline} ${flight.flightNumber}`,
-          }))
-        )
-        setFliterFlights(flightData)
-      }
-      setLoading(false)
-    } catch (error) {
-      if (retryCount < 3) {
-        setTimeout(
-          () => fetchFlights(retryCount + 1),
-          Math.pow(2, retryCount) * 1000
-        )
-      } else {
-        setError(error.message)
-        setLoading(false)
-      }
-    }
-  }
+  const [flightsData, setFlightsData] = useState([])
+  const { data, loading, error } = useFetchFromApi(apiURL, 'flights')
 
   useEffect(() => {
-    fetchFlights()
-  }, [])
+    if (data && data.length > 0) {
+      setFlightsData(
+        data.map((flight) => ({
+          ...flight,
+          searchText: `${flight.destination} ${flight.origin} ${flight.status} ${flight.airline} ${flight.flightNumber}`,
+        }))
+      )
+      setFliterFlights(flightsData)
+    }
+  }, [data])
 
   useEffect(() => {
     setFliterFlights(
-      flights.filter((flight) =>
+      flightsData.filter((flight) =>
         flight.searchText.toLowerCase().includes(searchValue.toLowerCase())
       )
     )

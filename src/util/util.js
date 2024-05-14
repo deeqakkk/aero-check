@@ -43,4 +43,7 @@ function getStatusColor(status) {
       return 'info'
   }
 }
-export { getStatusColor, convertDateFormat }
+
+const apiURL = 'https://flight-status-mock.core.travelopia.cloud'
+
+export { getStatusColor, convertDateFormat, apiURL }

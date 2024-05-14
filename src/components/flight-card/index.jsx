@@ -20,7 +20,7 @@ export default function FlightCard({ details }) {
     status,
   } = details
   return (
-    <Link to={`/flights/${id}`} state={{ details }}>
+    <Link to={`/flights/${id}`}>
       <Card variant="elevation" sx={{ m: 2, maxWidth: 700 }}>
         <CardActionArea>
           <Stack
