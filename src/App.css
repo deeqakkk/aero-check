@@ -1,40 +1,41 @@
-body{
+body {
   margin: 0;
   text-align: center;
 }
 
-.main-container{
+.main-container,.flight-details {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
 
-.navbar-container{
+.navbar-container {
   width: 100%;
   margin-bottom: 32px;
   text-align: left;
 }
 
-.flight-list, .flight-skeleton{
+.flight-list,
+.flight-skeleton {
   width: 50%;
 }
 
-.flight-list{
-width: 40rem !important;
+.flight-list {
+  width: 40rem !important;
 }
 
-.MuiDivider-wrapper{
+.MuiDivider-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-a{
+a {
   text-decoration: none;
-  color:inherit
+  color: inherit;
 }
 
-.error-page{
+.error-page {
   height: 100vh;
   display: flex;
   flex-direction: column !important;

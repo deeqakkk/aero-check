@@ -33,7 +33,6 @@ const FlightList = () => {
     }
   }
 
-  console.log(flights)
   useEffect(() => {
     fetchFlights()
   }, [])
