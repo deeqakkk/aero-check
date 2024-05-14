@@ -5,10 +5,11 @@ import AlertTitle from '@mui/material/AlertTitle'
 import FlightDetails from '../flight-card'
 import FlightCardSkeleton from '../skeleton'
 
-const FlightList = () => {
+const FlightList = ({ searchValue }) => {
   const [flights, setFlights] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const [filteredFlights, setFliterFlights] = useState([])
 
   const fetchFlights = async () => {
     try {
@@ -26,6 +27,7 @@ const FlightList = () => {
             searchText: `${flight.destination} ${flight.origin} ${flight.status} ${flight.airline} ${flight.flightNumber}`,
           }))
         )
+        setFliterFlights(flightData)
       }
 
       setLoading(false)
@@ -38,6 +40,14 @@ const FlightList = () => {
   useEffect(() => {
     fetchFlights()
   }, [])
+
+  useEffect(() => {
+    setFliterFlights(
+      flights.filter((flight) =>
+        flight.searchText.toLowerCase().includes(searchValue.toLowerCase())
+      )
+    )
+  }, [searchValue])
 
   if (loading) {
     return (
@@ -56,9 +66,9 @@ const FlightList = () => {
           {error}
         </Alert>
       )}
-      {flights &&
-        flights.length > 0 &&
-        flights.map((flight) => (
+      {filteredFlights &&
+        filteredFlights.length > 0 &&
+        filteredFlights.map((flight) => (
           <Grid xs={12} item key={flight.id}>
             <FlightDetails details={flight} />
           </Grid>

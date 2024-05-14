@@ -6,7 +6,7 @@ import ConnectingAirportsIcon from '@mui/icons-material/ConnectingAirports'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 
-export default function SearchAppBar() {
+export default function SearchAppBar({ serachValue, setSearchValue }) {
   return (
     <Box sx={{ flexGrow: 1 }} className="navbar-container">
       <AppBar position="static">
@@ -29,10 +29,12 @@ export default function SearchAppBar() {
             AeroCheck
           </Typography>
           <TextField
-            label="Search..."
             id="fullWidth"
             variant="filled"
-            size='small'
+            size="small"
+            label='Search using status, flight, name...'
+            value={serachValue}
+            onChange={(e) => setSearchValue(e.target.value)}
             sx={{
               backgroundColor: 'white',
             }}

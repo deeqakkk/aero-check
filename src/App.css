@@ -10,6 +10,10 @@ body {
   align-items: center;
 }
 
+.flight-details{
+  align-items: start;
+}
+
 .navbar-container {
   width: 100%;
   margin-bottom: 32px;
@@ -30,6 +34,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 a {
   text-decoration: none;
   color: inherit;

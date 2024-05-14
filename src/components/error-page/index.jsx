@@ -4,7 +4,6 @@ import { Link, useRouteError } from 'react-router-dom'
 
 const ErrorPage = () => {
   const error = useRouteError()
-  console.log(error)
 
   return (
     <Grid className="error-page">
@@ -20,7 +19,7 @@ const ErrorPage = () => {
           m: 4,
         }}
       >
-        <Link to='/'>Go Back</Link>
+        <Link to="/">Go Back</Link>
       </Button>
     </Grid>
   )

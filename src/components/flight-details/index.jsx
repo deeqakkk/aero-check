@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import { useLocation, Navigate } from 'react-router-dom'
+import { useLocation, Navigate, Link } from 'react-router-dom'
 import Alert from '@mui/material/Alert'
 import Grid from '@mui/material/Grid'
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff'
@@ -16,7 +16,7 @@ export default function Flight() {
   const location = useLocation()
 
   if (!location.state) {
-    <Navigate replace to="/404" />
+    ;<Navigate replace to="/404" />
   }
 
   const { flightNumber, airline, origin, destination, departureTime, status } =
@@ -24,7 +24,16 @@ export default function Flight() {
 
   return (
     <Grid className="flight-details">
-      <Card sx={{ maxWidth: 500 }}>
+      <Button
+        variant="outlined"
+        size="large"
+        sx={{
+          m: 4,
+        }}
+      >
+        <Link to="/">Go Back</Link>
+      </Button>
+      <Card sx={{ maxWidth: 500, m: 4 }}>
         <CardMedia
           sx={{
             width: 400,
