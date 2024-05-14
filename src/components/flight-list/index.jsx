@@ -14,12 +14,11 @@ const FlightList = ({ searchValue }) => {
 
   useEffect(() => {
     if (data && data.length > 0) {
-      setFlightsData(
-        data.map((flight) => ({
-          ...flight,
-          searchText: `${flight.destination} ${flight.origin} ${flight.status} ${flight.airline} ${flight.flightNumber}`,
-        }))
-      )
+      const updatedFlightsData = data.map((flight) => ({
+        ...flight,
+        searchText: `${flight.destination} ${flight.origin} ${flight.status} ${flight.airline} ${flight.flightNumber}`,
+      }))
+      setFlightsData(updatedFlightsData)
       setFliterFlights(flightsData)
     }
   }, [data])
