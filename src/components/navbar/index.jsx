@@ -33,7 +33,7 @@ export default function SearchAppBar({ serachValue, setSearchValue }) {
             variant="filled"
             size="small"
             label='Search using status, flight, name...'
-            value={serachValue}
+            defaultValue='Airline'
             onChange={(e) => setSearchValue(e.target.value)}
             sx={{
               backgroundColor: 'white',
