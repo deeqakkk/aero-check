@@ -1,8 +1,46 @@
-# React + Vite
+# AeroCheck Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a flight information system that allows you to view a list of available flights, search for flights by various parameters, and view detailed information about each flight. It also includes error handling and a custom hook for fetching data from APIs.
 
-Currently, two official plugins are available:
+## Live link
+[Live here](https://aero-check.onrender.com/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+1. **Flight List**: Fetches and renders a list of all available flights.
+2. **Flight Details**: On clicking each flight card, it opens a detailed view of the selected flight.
+3. **Search**: A search field allows users to search using origin, destination, airplane name, airplane number, and status.
+4. **Error Handling**: Custom error handling for all pages, including a custom error page if the URL is not correct.
+5. **Custom Hook**: A custom hook, `useFetchFromApi`, is used to avoid repeating code when fetching data from APIs.
+6. **Preloader**: A preloader is displayed on every page when data is being fetched from the APIs.
+7. **Responsive Design**: The application is mobile-friendly and responsive.
+
+## Local Setup
+
+Follow these steps to set up the project locally:
+
+1. Clone the repository from GitHub:
+
+```sh
+git clone https://github.com/deeqakkk/aero-check.git
+```
+
+2. Navigate into the project directory:
+
+```sh
+cd aero-check
+```
+
+3. Install the project dependencies:
+
+```sh
+npm install
+```
+
+4. Start the local development server:
+
+```sh
+npm run dev
+```
+
+Now, you can open your browser and navigate to `http://localhost:5173` to view the application.
