@@ -66,13 +66,17 @@ const FlightList = ({ searchValue }) => {
           {error}
         </Alert>
       )}
-      {filteredFlights &&
-        filteredFlights.length > 0 &&
+      {filteredFlights && filteredFlights.length > 0 ? (
         filteredFlights.map((flight) => (
           <Grid xs={12} item key={flight.id}>
             <FlightDetails details={flight} />
           </Grid>
-        ))}
+        ))
+      ) : (
+        <Alert severity="warning">
+          No data found, please refresh or search again!
+        </Alert>
+      )}
     </Grid>
   )
 }
